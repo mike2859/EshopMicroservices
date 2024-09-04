@@ -15,7 +15,7 @@ public class DeleteBasketEndpoint : ICarterModule
 
             var result = await sender.Send(new DeleteBasketCommand(userName));
 
-            var response = result.Adapt<DeleteBasketCommand>();
+            var response = result.Adapt<DeleteBasketResponse>();
 
             return Results.Ok(response);
         })
