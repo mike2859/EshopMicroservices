@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Basket.API.Data;
 
-public class CachedBasketRepsoditory(IBasketRepository repository, IDistributedCache cache) : IBasketRepository
+public class CachedBasketRepository(IBasketRepository repository, IDistributedCache cache) : IBasketRepository
 {
 
 
