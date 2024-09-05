@@ -1,4 +1,5 @@
-﻿namespace Basket.API.Basket.StoreBasket;
+﻿
+namespace Basket.API.Basket.StoreBasket;
 
 public record StoreBasketCommand(ShoppingCart Cart) : ICommand<StoreBasketResult>;
 
@@ -14,7 +15,7 @@ public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
     }
 }
 
-internal class StoreBasketCommandHandler
+internal class StoreBasketCommandHandler(IBasketRepository repository)
     : ICommandHandler<StoreBasketCommand, StoreBasketResult>
 {
     public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
@@ -24,7 +25,8 @@ internal class StoreBasketCommandHandler
 
         //TODO: store basket in databse (use Marten upsert - if exist = update, if not exist = create)
         //TODO: update cache Redis
+        await repository.StoreBasket(command.Cart, cancellationToken);
 
-        return new StoreBasketResult("mike");
+        return new StoreBasketResult(command.Cart.UserName);
     }
 }
