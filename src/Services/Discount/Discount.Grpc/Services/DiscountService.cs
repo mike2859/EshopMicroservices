@@ -1,4 +1,4 @@
-﻿using Grpc.Core;
+﻿ using Grpc.Core;
 
 namespace Discount.Grpc.Services;
 
@@ -12,7 +12,7 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
         return base.GetDiscount(request, context);
     }
 
-    public override Task<CouponModel> CreateDisocunt(CreateDisocuntrequest request, ServerCallContext context)
+    public override Task<CouponModel> CreateDisocunt(CreateDisocuntRequest request, ServerCallContext context)
     {
         return base.CreateDisocunt(request, context);
     }

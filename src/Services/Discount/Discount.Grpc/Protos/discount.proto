@@ -9,7 +9,7 @@ service DiscountProtoService{
 
 	// Discount CRUD Operations
 	rpc GetDiscount (GetDiscountRequest) returns (CouponModel);
-	rpc CreateDisocunt (CreateDisocuntrequest) returns (CouponModel);
+	rpc CreateDisocunt (CreateDisocuntRequest) returns (CouponModel);
 	rpc UpdateDiscount (UpdateDiscountRequest) returns (CouponModel);
 	rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
 }
@@ -25,7 +25,7 @@ message CouponModel {
 	int32 amount = 4;
 }
 
-message CreateDisocuntrequest {
+message CreateDisocuntRequest {
 	CouponModel coupon = 1;
 }
 
