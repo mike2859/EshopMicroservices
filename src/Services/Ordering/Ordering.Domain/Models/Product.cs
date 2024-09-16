@@ -10,8 +10,12 @@ public class Product : Entity<ProductId>
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
-        var product = new Product { Name = name, Price = price };
-
+        var product = new Product
+        {
+            Id = id,
+            Name = name,
+            Price = price
+        };
         return product;
     }
 }
