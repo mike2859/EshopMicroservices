@@ -1,20 +1,19 @@
-﻿namespace Ordering.API
+﻿namespace Ordering.API;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
+        //services.addCarter();
 
-        public static IServiceCollection AddApiServices(this IServiceCollection services)
-        {
-            //services.addCarter();
+        return services;
+    }
 
-            return services;
-        }
+    public static WebApplication UseApiServices(this WebApplication app)
+    {
+        //app.MapCarter();
 
-        public static WebApplication UseApiServices(this WebApplication app)
-        {
-            //app.MapCarter();
-
-            return app;
-        }
+        return app;
     }
 }
