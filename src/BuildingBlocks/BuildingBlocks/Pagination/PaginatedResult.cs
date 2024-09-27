@@ -7,9 +7,9 @@ public class PaginatedResult<TEntity>
 
     public int PageIndex { get; } = pageIndex;
     public int PageSize { get; } = pageSize;
-    public int Count { get; }
+    public long Count { get; } = count;
 
-    public IEnumerable<TEntity> Data { get; }
+    public IEnumerable<TEntity> Data { get; } = data;
 
 
 

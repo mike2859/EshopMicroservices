@@ -3,17 +3,35 @@
 public class GetOrdersByCustomerHandler(IApplicationDbContext dbContext)
     : IQueryHandler<GetOrdersByCustomerQuery, GetOrdersByCustomerResult>
 {
+
     public async Task<GetOrdersByCustomerResult> Handle(GetOrdersByCustomerQuery query, CancellationToken cancellationToken)
+    {
+        // get orders by customer using dbContext
+        // return result
+
+        var orders = await dbContext.Orders
+                        .Include(o => o.OrderItems)
+                        .AsNoTracking()
+                        .Where(o => o.CustomerId == CustomerId.Of(query.CustomerId))
+                        .OrderBy(o => o.OrderName.Value)
+                        .ToListAsync(cancellationToken);
+
+        return new GetOrdersByCustomerResult(orders.ToOrderDtoList());
+    }
+
+    public async Task<GetOrdersByCustomerResult> Handle2(GetOrdersByCustomerQuery query, CancellationToken cancellationToken)
     {
         //Get Orders by customer using dbContext
         var orders = await dbContext.Orders
             .Include(o => o.OrderItems)
             .AsNoTracking()
             .Where(o => o.CustomerId == CustomerId.Of(query.CustomerId))
-            .OrderBy(o => o.OrderName)
+            .OrderBy(o => o.OrderName.Value)
             .ToListAsync(cancellationToken);
 
         //Return result
-        return new GetOrdersByCustomerResult(orders.ToOrderDtoList());
+        var gg =  new GetOrdersByCustomerResult(orders.ToOrderDtoList());
+
+        return gg;
     }
 }
