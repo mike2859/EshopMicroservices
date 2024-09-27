@@ -24,22 +24,28 @@ public class CustomeExceptionHandler(ILogger<CustomeExceptionHandler> logger)
             ),
             ValidationException =>
             (
-            exception.Message,
-            exception.GetType().Name,
-            context.Response.StatusCode = StatusCodes.Status404NotFound
+                exception.Message,
+                exception.GetType().Name,
+                context.Response.StatusCode = StatusCodes.Status404NotFound
             ),
             BadRequestException =>
            (
-           exception.Message,
-           exception.GetType().Name,
-           context.Response.StatusCode = StatusCodes.Status400BadRequest
+               exception.Message,
+               exception.GetType().Name,
+               context.Response.StatusCode = StatusCodes.Status400BadRequest
            ),
-
-            _ =>
+            NotFoundException =>
             (
-            exception.Message,
-            exception.GetType().Name,
-            context.Response.StatusCode = StatusCodes.Status500InternalServerError
+                exception.Message,
+               exception.GetType().Name,
+               context.Response.StatusCode = StatusCodes.Status404NotFound
+            ),
+
+             _ =>
+            (
+                exception.Message,
+                exception.GetType().Name,
+                context.Response.StatusCode = StatusCodes.Status500InternalServerError
             )
         };
 
