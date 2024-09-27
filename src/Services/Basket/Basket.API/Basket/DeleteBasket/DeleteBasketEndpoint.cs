@@ -1,6 +1,4 @@
-﻿using Basket.API.Basket.StoreBasket;
-
-namespace Basket.API.Basket.DeleteBasket;
+﻿namespace Basket.API.Basket.DeleteBasket;
 
 //public record DeleteBasketRequest(string UserName);
 
@@ -19,12 +17,12 @@ public class DeleteBasketEndpoint : ICarterModule
 
             return Results.Ok(response);
         })
-            .WithName("DeleteBasket")
-            .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status400BadRequest)
-            .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Delete Basket")
-            .WithDescription("DeleteBasket"); 
+        .WithName("DeleteBasket")
+        .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Delete Basket")
+        .WithDescription("DeleteBasket"); 
 
     }
 }
