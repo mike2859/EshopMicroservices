@@ -45,7 +45,6 @@ public static class DatabaseExtentions
     {
         if(!await context.Orders.AnyAsync())
         {
-
             await context.Orders.AddRangeAsync(InitialData.OrdersWithItems);
             await context.SaveChangesAsync();
         }
